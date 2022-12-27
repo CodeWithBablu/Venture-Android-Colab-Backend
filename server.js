@@ -56,6 +56,24 @@ app.post('/payment-sheet', async (req, res) => {
 });
 
 
+
+//create new record
+app.post('/get-order-history', (req, res) => {
+
+  const cus_email = req.body.cus_email;
+
+  const query = { email: cus_email }
+  order.find(query)
+    .then((response) => {
+      if (response) res.send(response);
+    })
+    .catch((err) => {
+      res.send(err);
+    })
+
+});
+
+
 //create new record
 app.post('/add-order', (req, res) => {
 
